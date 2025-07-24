@@ -1,0 +1,64 @@
+
+PFB  the  effort  for database decommission.  MF system or other apps are not  in this effort scope.   
+The duration is purely implementation from Design to deployment (excluding assessment & excluding system/platform setup).
+
+ 	Effort (PD)	Timeline ( best condition)
+Simple	31	4-6 Weeks
+Medium	90	8 - 10 Weeks
+Complex	179	14- 16 weeks
+
+•	The effort is based on data discovery  tool either Informatica ILM Or Solix Or BigID etc.  Client must have license of this tool.  
+
+Below are approach /assumption for  Database decommission.
+
+Database decommission follows a structured, policy-driven approach to decommissioning systems that contain personal data, to ensure compliance with global data protection regulations such as GDPR, HIPAA, DPDP Act (India), CCPA etc. The process integrates data privacy principles, secure archival, and defensible deletion practices.
+
+Governance and Regulatory Alignment: A regulatory applicability and maturity assessment to determine obligations under laws such as GDPR, HIPAA, and others. This includes:
+•	Connecting with Data Protection Officer (DPO) and performing a Data Audit where required.
+•	Conducting Data Protection Impact Assessments (DPIAs) for systems flagged for decommissioning.
+•	Ensuring data processing purposes are clearly defined and mapped to legal bases using tools like Collibra and/or OneTrust. 
+Data Discovery and Classification: Before decommissioning, a comprehensive data discovery and classification exercise to:
+•	Identify personal and sensitive data (PII, PHI, SPI).
+•	Tag data assets with jurisdictional metadata (e.g., GDPR, HIPAA) for compliance enforcement.
+•	Maintain data flow maps and consent records for transparency and audit readiness.
+Data Archival & Retention
+•	Data Privacy, retention/deletion and DSAR policies and procedures are clearly defined and compliant with regulatory requirements (e.g., CCPA/CPRA, HIPPA, applicable sectoral regulations etc ).
+•	Historical data will be archived or migrated to a centralized repository or data lake.
+•	No data recovery or reprocessing is expected post-decommissioning.
+Archival Strategy:  Implement a secure, scalable archival platform that includes:
+•	Extraction Module: Pulls data from legacy systems using ETL tools like Syncsort Connect.
+•	Archive Store Module: Stores data in compliant cloud environments (e.g., AWS S3) with metadata tagging.
+•	Retrieval Module: Enables secure, role-based access to archived data using services like AWS Athena and Glue 
+Archived data should be retained strictly as per documented retention schedules and business rules. 
+TTL-based auto-expiry and hard deletion routines should be enforced via Snowflake or IBM Optim, depending on the tech stack.
+
+Data Deletion and Anonymization: Upon retention expiry or DSAR (Data Subject Access Request), we:
+•	Trigger deletion or de-identification routines using automated workflows ,  Apply consistent masking/anonymization logic across environments using tools like Solix or Information ILM
+•	Maintain audit trails for all deletion activities to support legal defensibility.
+Incident Management and Legal Compliance: Maintain robust protocols for:
+•	Privacy incident coordination and customer notification, Cross-border data transfer assessments (e.g., SCCs, TIAs), Legal hold and audit readiness for archived data.
+Dependencies & Integrations
+•	All upstream/downstream dependencies are mapped and validated  by app stakeholders/SMEs.
+•	Decommissioning will not impact active integrations with other systems (e.g., CRM, policy admin, claims).
+•	Interfaces and APIs will be retired or redirected as needed by app teams.
+Security & Compliance
+•	Security assessments will be conducted before decommissioning.
+•	All applications will be securely retired, ensuring no residual access or vulnerabilities.
+•	Compliance teams will validate the process for audit readiness.
+Timeline & Phasing
+•	Decommissioning will be done in phases or waves (e.g., 6-8 apps per month)
+•	Each phase includes planning, execution, validation, and closure.
+•	Client must have Data Discovery Tool,  tool for Masking, Archival etc
+•	No unexpected costs for third-party tools or vendors.
+Stakeholder Involvement
+•	Business owners and IT stakeholders are available for validation, approvals, and UAT.
+•	No major organizational changes (e.g., mergers, restructures) considered.
+•	Support required from CLIENT during the Strategy, Blueprint & Planning exercise.
+Documentation: 
+An inventory of the following documentation is already available 
+•	Retention Schedule , Application Documentation ,   Data Flow Diagrams
+•	Data Models , Schema Definitions (Schema Metadata, Data Definition Language(DDL) etc.)
+•	Application Business Owner/SME , Application IT Service Owner ,DBA and System Admin Team
+•	Compliance documents
+•	Enterprise Architecture Team Lead , Information Security Team Lead
+•	SME’s/app team  will share any available documents related to policies, procedures, standards, guidelines etc. at the beginning of the engagement
